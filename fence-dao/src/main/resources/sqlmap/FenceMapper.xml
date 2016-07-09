@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.daimaniu.dao.FenceMapper">
+    <resultMap id="BaseResultMap" type="cn.daimaniu.model.Fence">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="type" property="type" jdbcType="INTEGER"/>
+        <result column="lng" property="lng" jdbcType="DOUBLE"/>
+        <result column="lat" property="lat" jdbcType="DOUBLE"/>
+        <result column="address" property="address" jdbcType="VARCHAR"/>
+        <result column="circle" property="circle" jdbcType="VARCHAR"/>
+        <result column="polygon" property="polygon" jdbcType="VARCHAR"/>
+        <result column="created" property="created" jdbcType="BIGINT"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, type, lng, lat, address, circle, polygon, created
+  </sql>
+    
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from fence
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from fence
+    </select>
+
+    <select id="countList" resultType="int" parameterType="map">
+        select
+        count(id)
+        from fence
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from fence
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="cn.daimaniu.model.Fence">
+    insert into fence (id, type, lng, 
+      lat, address, circle, 
+      polygon, created)
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{lng,jdbcType=DOUBLE}, 
+      #{lat,jdbcType=DOUBLE}, #{address,jdbcType=VARCHAR}, #{circle,jdbcType=VARCHAR}, 
+      #{polygon,jdbcType=VARCHAR}, #{created,jdbcType=BIGINT})
+  </insert>
+    <insert id="insertSelective" parameterType="cn.daimaniu.model.Fence">
+        insert into fence
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="lng != null">
+                lng,
+            </if>
+            <if test="lat != null">
+                lat,
+            </if>
+            <if test="address != null">
+                address,
+            </if>
+            <if test="circle != null">
+                circle,
+            </if>
+            <if test="polygon != null">
+                polygon,
+            </if>
+            <if test="created != null">
+                created,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=INTEGER},
+            </if>
+            <if test="lng != null">
+                #{lng,jdbcType=DOUBLE},
+            </if>
+            <if test="lat != null">
+                #{lat,jdbcType=DOUBLE},
+            </if>
+            <if test="address != null">
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="circle != null">
+                #{circle,jdbcType=VARCHAR},
+            </if>
+            <if test="polygon != null">
+                #{polygon,jdbcType=VARCHAR},
+            </if>
+            <if test="created != null">
+                #{created,jdbcType=BIGINT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.daimaniu.model.Fence">
+        update fence
+        <set>
+            <if test="type != null">
+                type = #{type,jdbcType=INTEGER},
+            </if>
+            <if test="lng != null">
+                lng = #{lng,jdbcType=DOUBLE},
+            </if>
+            <if test="lat != null">
+                lat = #{lat,jdbcType=DOUBLE},
+            </if>
+            <if test="address != null">
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="circle != null">
+                circle = #{circle,jdbcType=VARCHAR},
+            </if>
+            <if test="polygon != null">
+                polygon = #{polygon,jdbcType=VARCHAR},
+            </if>
+            <if test="created != null">
+                created = #{created,jdbcType=BIGINT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.daimaniu.model.Fence">
+    update fence
+    set type = #{type,jdbcType=INTEGER},
+      lng = #{lng,jdbcType=DOUBLE},
+      lat = #{lat,jdbcType=DOUBLE},
+      address = #{address,jdbcType=VARCHAR},
+      circle = #{circle,jdbcType=VARCHAR},
+      polygon = #{polygon,jdbcType=VARCHAR},
+      created = #{created,jdbcType=BIGINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

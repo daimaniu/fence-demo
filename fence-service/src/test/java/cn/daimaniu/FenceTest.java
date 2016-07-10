@@ -24,13 +24,13 @@ public class FenceTest {
     public void inFenceTest() {
         //浙大玉泉校区 120.123077,30.263842
         boolean isInYQ = fenceComponent.checkInFence(120.123077, 30.263842);
-        assertFalse(isInYQ);
+        assertTrue(isInYQ);
         //浙大紫金港校区 120.086634,30.303638
         boolean isInZJG = fenceComponent.checkInFence(120.086634, 30.303638);
         assertTrue(isInZJG);
 
         //五洲国际 120.096333,30.294223
         boolean isInWZGJ = fenceComponent.checkInFence(120.096333, 30.294223);
-        assertTrue(isInWZGJ);
+        assertFalse(isInWZGJ);
     }
 }

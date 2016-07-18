@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Date   :2016-07-09 19:45.
  */
 @Controller
-@RequestMapping("/v1/uploads/")
+@RequestMapping("/v1/uploads")
 public class UploadController {
 
     @Autowired

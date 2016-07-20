@@ -11,6 +11,7 @@
         <module>fence-api</module>
         <module>fence-dao</module>
         <module>fence-service</module>
+        <module>mybatis-helper</module>
     </modules>
     <packaging>pom</packaging>
 
